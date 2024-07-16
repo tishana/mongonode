@@ -5,11 +5,15 @@ dotenv.config();
 const PORT = process.env.PORT || 3000
 const app = express()
 
+import grades from './routes/grades.mjs'
+
 app.use(express.json())
 
 app.get("/", (req, res) => {
   res.send("Welcome to the API.")
 })
+
+app.use('/grades', grades)
 
 // Global error handling
 app.use((err, _req, res, next) => {
